@@ -57,20 +57,20 @@
                 <div class="form-group">
                     {% for choice in question.choice_set.all %}
                     <div class="form-check">
-                        {% if choice.is_correct %}
+                        {% if choice.correct %}
                         <div class="text-success">Correct answer: {{ choice.choice }}</div>
-                        {% else %}{% if choice.is_correct and choice in choices %}
+                        {% else %}{% if choice.correct and choice in choices %}
                         <div class="text-warning">Not selected: {{ choice.choice }}</div>
-                        {% else %} {% if not choice.is_correct and not choice in choices %%
+                        {% else %} {% if not choice.correct and choice in choices %}
                         <div class="text-danger">Wrong answer: {{ choice.choice }}</div>
                         {% else %}
-                        <div>{{ choice.content }}</div>
+                        <div>{{ choice.choice }}</div>
                         {% endif %}{% endif %}{% endif %}
                     </div>
                     {% endfor %}
                 </div>
             </div>
-            {% endfor %}}
+            {% endfor %}
         </div>
     </div>
 </body>
